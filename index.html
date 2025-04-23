@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AppleOutlet</title>
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>AppleOutlet</h1>
+    <nav>
+      <a href="file:///C:/Users/%D0%94%D0%BE%D0%BC/Desktop/itechshop/mac.html">Mac</a>
+      <a href="file:///C:/Users/%D0%94%D0%BE%D0%BC/Desktop/itechshop/ipad.html">iPad</a>
+      <a href="file:///C:/Users/%D0%94%D0%BE%D0%BC/Desktop/itechshop/iphone.html">iPhone</a>
+      <a href="file:///C:/Users/%D0%94%D0%BE%D0%BC/Desktop/itechshop/MacBook.html">MacBook</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="filters">
+      <h3>Фільтри</h3>
+      <p><strong>Категорії</strong></p>
+      <label><input type="checkbox" class="category-filter" value="new"> нові</label><br>
+      <label><input type="checkbox" class="category-filter" value="used"> Б/У</label>
+
+      <p><strong>Модель</strong></p>
+      <label><input type="checkbox" class="model-filter" value="iPhone 12"> iPhone 12</label><br>
+      <label><input type="checkbox" class="model-filter" value="iPhone 13"> iPhone 13</label><br>
+      <label><input type="checkbox" class="model-filter" value="iPhone 13 Pro"> iPhone 13 Pro</label>
+    </div>
+
+    <div class="products">
+      <div class="product-card" data-category="new" data-model="iPhone 13 Pro">
+        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-max-family-select?wid=940&hei=1112&fmt=png-alpha&.v=1629840712000" alt="iPhone">
+        <h4>Apple iPhone 13 Pro 128GB</h4>
+        <div class="price">27 999 ₴</div>
+        <div class="old-price">31 999 ₴</div>
+        <button class="buy-button">Купити</button>
+      </div>
+      <div class="product-card" data-category="new" data-model="iPhone 13 Pro">
+        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-max-family-select?wid=940&hei=1112&fmt=png-alpha&.v=1629840712000" alt="iPhone">
+        <h4>Apple iPhone 13 Pro 128GB</h4>
+        <div class="price">27 999 ₴</div>
+        <div class="old-price">31 999 ₴</div>
+        <button class="buy-button">Купити</button>
+      </div>	
+      <div class="product-card" data-category="new" data-model="iPhone 13 Pro">
+        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-max-family-select?wid=940&hei=1112&fmt=png-alpha&.v=1629840712000" alt="iPhone">
+        <h4>Apple iPhone 13 Pro 128GB</h4>
+        <div class="price">27 999 ₴</div>
+        <div class="old-price">31 999 ₴</div>
+        <button class="buy-button">Купити</button>
+      </div>
+      <div class="product-card" data-category="new" data-model="iPhone 13 Pro">
+        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-max-family-select?wid=940&hei=1112&fmt=png-alpha&.v=1629840712000" alt="iPhone">
+        <h4>Apple iPhone 13 Pro 128GB</h4>
+        <div class="price">27 999 ₴</div>
+        <div class="old-price">31 999 ₴</div>
+        <button class="buy-button">Купити</button>
+      </div>	
+      <div class="product-card" data-category="new" data-model="iPhone 13 Pro">
+        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-max-family-select?wid=940&hei=1112&fmt=png-alpha&.v=1629840712000" alt="iPhone">
+        <h4>Apple iPhone 13 Pro 128GB</h4>
+        <div class="price">27 999 ₴</div>
+        <div class="old-price">31 999 ₴</div>
+        <button class="buy-button">Купити</button>
+      </div>
+      <div class="product-card" data-category="new" data-model="iPhone 13">
+        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-max-family-select?wid=940&hei=1112&fmt=png-alpha&.v=1629840712000" alt="iPhone">
+        <h4>Apple iPhone 13 Pro 128GB</h4>
+        <div class="price">27 999 ₴</div>
+        <div class="old-price">31 999 ₴</div>
+        <button class="buy-button">Купити</button>
+      </div>	  
+      <!-- Додай інші продукти аналогічно з відповідними атрибутами data-category і data-model -->
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 AppleOutlet. Всі права захищено. Умови користування | Політика конфіденційності
+  </footer>
+
+  <script>
+    const categoryFilters = document.querySelectorAll('.category-filter');
+    const modelFilters = document.querySelectorAll('.model-filter');
+    const productCards = document.querySelectorAll('.product-card');
+
+    function filterProducts() {
+      const selectedCategories = Array.from(categoryFilters).filter(cb => cb.checked).map(cb => cb.value);
+      const selectedModels = Array.from(modelFilters).filter(cb => cb.checked).map(cb => cb.value);
+
+      productCards.forEach(card => {
+        const category = card.dataset.category;
+        const model = card.dataset.model;
+
+        const categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(category);
+        const modelMatch = selectedModels.length === 0 || selectedModels.includes(model);
+
+        card.style.display = (categoryMatch && modelMatch) ? 'block' : 'none';
+      });
+    }
+
+    categoryFilters.forEach(cb => cb.addEventListener('change', filterProducts));
+    modelFilters.forEach(cb => cb.addEventListener('change', filterProducts));
+  </script>
+</body>
+</html>

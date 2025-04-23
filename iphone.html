@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iPhone - AppleOutlet</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>AppleOutlet</h1>
+    <nav>
+      <a href="mac.html">Mac</a>
+      <a href="ipad.html">iPad</a>
+      <a href="iphone.html">iPhone</a>
+      <a href="macbook.html">MacBook</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="filters">
+      <h3>Фільтри</h3>
+      <p><strong>Категорії</strong></p>
+      <label><input type="checkbox" class="category-filter" value="new"> нові</label><br>
+      <label><input type="checkbox" class="category-filter" value="used"> Б/У</label>
+
+      <p><strong>Модель</strong></p>
+      <label><input type="checkbox" class="model-filter" value="iPhone 12"> iPhone 12</label><br>
+      <label><input type="checkbox" class="model-filter" value="iPhone 13"> iPhone 13</label><br>
+      <label><input type="checkbox" class="model-filter" value="iPhone 13 Pro"> iPhone 13 Pro</label>
+    </div>
+
+    <div class="products">
+      <div class="product-card" data-category="new" data-model="iPhone 13 Pro">
+        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-max-family-select?wid=940&hei=1112&fmt=png-alpha&.v=1629840712000" alt="iPhone">
+        <h4>Apple iPhone 13 Pro 128GB</h4>
+        <div class="price">27 999 ₴</div>
+        <div class="old-price">31 999 ₴</div>
+        <button class="buy-button">Купити</button>
+      </div>
+      <!-- Можеш додати більше карток за цим шаблоном -->
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 AppleOutlet. Всі права захищено. Умови користування | Політика конфіденційності
+  </footer>
+
+  <script src="filters.js"></script>
+</body>
+</html>

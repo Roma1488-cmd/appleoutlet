@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iPad - AppleOutlet</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>AppleOutlet</h1>
+    <nav>
+      <a href="mac.html">Mac</a>
+      <a href="ipad.html">iPad</a>
+      <a href="iphone.html">iPhone</a>
+      <a href="macbook.html">MacBook</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="filters">
+      <h3>Фільтри</h3>
+      <p><strong>Категорії</strong></p>
+      <label><input type="checkbox" class="category-filter" value="new"> нові</label><br>
+      <label><input type="checkbox" class="category-filter" value="used"> Б/У</label>
+
+      <p><strong>Модель</strong></p>
+      <label><input type="checkbox" class="model-filter" value="iPad Air"> iPad Air</label><br>
+      <label><input type="checkbox" class="model-filter" value="iPad Pro"> iPad Pro</label>
+    </div>
+
+    <div class="products">
+      <div class="product-card" data-category="new" data-model="iPad Air">
+        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-air-select-wifi-starlight-202203?wid=940&hei=1112&fmt=png-alpha&.v=1645066722239" alt="iPad Air">
+        <h4>Apple iPad Air 5</h4>
+        <div class="price">23 499 ₴</div>
+        <div class="old-price">26 999 ₴</div>
+        <button class="buy-button">Купити</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 AppleOutlet. Всі права захищено. Умови користування | Політика конфіденційності
+  </footer>
+
+  <script src="filters.js"></script>
+</body>
+</html>
