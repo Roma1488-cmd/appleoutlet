@@ -3,6 +3,8 @@ html, body {
   min-height: 100vh;
   margin: 0;
   padding: 0;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -13,11 +15,35 @@ body {
   background: #f7f7f7;  
 }
 
+/* Хедер */
 header {
   background: black;
   color: white;
-  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 64px;
+  padding: 0 2rem;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0 2rem;
+  flex: 0 1 auto;
   text-align: center;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: absolute;
+  right: 2rem;
+  top: 0;
+  bottom: 0;
+  height: 100%;
 }
 
 nav a {
@@ -25,8 +51,26 @@ nav a {
   color: white;
   text-decoration: none;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 
+.burger {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  left: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: none;
+  z-index: 1100;
+}
+
+/* Контейнер */
 .container {
   display: flex;
   flex-direction: row;
@@ -36,6 +80,7 @@ nav a {
   flex: 1 0 auto;
 }
 
+/* Фільтри */
 .filters {
   flex: 200px;
   background: white;
@@ -44,17 +89,20 @@ nav a {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   max-width: 240px;
   height: auto;
+  transition: transform 0.3s;
+  z-index: 1050;
 }
 
+/* Товари */
 .products {
   flex: 3;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(264px, 1fr));
   gap: 1.5rem;
-  justify-items: start;      /* вирівнювання карток по лівому краю */
+  justify-items: start;
   align-items: stretch;
   padding: 1rem 0.5rem;
-  justify-content: start;    /* додатково для grid */
+  justify-content: start;
 }
 
 .product-card {
@@ -117,58 +165,70 @@ footer {
   flex-shrink: 0;
 }
 
+/* Адаптація */
 @media (max-width: 1024px) {
   .products {
     grid-template-columns: repeat(2, 1fr);
   }
-}
-
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-  }
-  .filters {
-    width: 100%;
-    max-width: 100%;
-  }
-  .products {
-    grid-template-columns: 1fr;
-    padding: 0.5rem 0;
-  }
-  .product-card {
-    max-width: 100%;
-    min-width: 0;
-    margin: 0 auto;
-  }
-}
-
-.header-left {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.burger {
-  background: none;
-  border: none;
-  font-size: 2rem;
-  color: white;
-  cursor: pointer;
-  display: none; /* показувати тільки на малих екранах */
-}
-
-@media (max-width: 1024px) {
   .burger {
     display: block;
   }
+  nav {
+    position: static;
+    height: auto;
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 900px) {
+  header {
+    padding: 0 1rem;
+  }
+  .logo {
+    margin: 0 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  html, body {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+  .container {
+    flex-direction: column;
+    padding: 0.5rem 0;
+    max-width: 100vw;
+    box-sizing: border-box;
+  }
+  .filters {
+    width: 100vw;
+    max-width: 100vw;
+    box-sizing: border-box;
+  }
+  .products {
+    grid-template-columns: 1fr;
+    padding: 0;
+    max-width: 100vw;
+    box-sizing: border-box;
+  }
+  .product-card {
+    max-width: 100vw;
+    min-width: 0;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+}
+
+/* Бургер-меню для фільтрів */
+@media (max-width: 1024px) {
   .filters {
     position: fixed;
-    top: 64px; /* висота хедера */
+    top: 64px;
     left: 0;
     width: 260px;
     height: 100vh;
     background: #fff;
-    z-index: 1000;
+    z-index: 1200;
     box-shadow: 2px 0 12px rgba(0,0,0,0.1);
     transform: translateX(-100%);
     transition: transform 0.3s;
@@ -177,8 +237,5 @@ footer {
   }
   .filters.open {
     transform: translateX(0);
-  }
-  .container {
-    flex-direction: column;
   }
 }
