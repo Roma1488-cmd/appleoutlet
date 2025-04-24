@@ -8,20 +8,20 @@
 </head>
 <body>
 <header>
-  <div class="header-left">
-    <button class="burger" id="burger">&#9776;</button>
+  <button class="burger" id="burger">&#9776;</button>
+  <div class="header-center">
     <span class="logo">AppleOutlet</span>
+    <nav>
+      <a href="mac.html">iMac</a>
+      <a href="ipad.html">iPad</a>
+      <a href="iphone.html">iPhone</a>
+      <a href="macbook.html">MacBook</a>
+    </nav>
   </div>
-  <nav>
-    <a href="mac.html">iMac</a>
-    <a href="ipad.html">iPad</a>
-    <a href="iphone.html">iPhone</a>
-    <a href="macbook.html">MacBook</a>
-  </nav>
 </header>
 
   <div class="container">
-    <div class="filters">
+    <div class="filters" id="filters">
       <h3>Фільтри</h3>
       <p><strong>Категорії</strong></p>
       <label><input type="checkbox" class="category-filter" value="new"> нові</label><br>
@@ -33,6 +33,7 @@
     </div>
 
     <div class="products">
+      <!-- Твої картки товарів -->
       <div class="product-card" data-category="used" data-model="MacBook Pro">
         <img src="https://cdn.myshoptet.com/usr/www.jabkolevne.cz/user/shop/big/19187_nl258a1a6.jpg?67473361" alt="MacBook Pro">
         <h4>MacBook Pro 14" M1 Pro</h4>
@@ -40,34 +41,7 @@
         <div class="old-price">64 999 ₴</div>
         <button class="buy-button"><a href="https://t.me/ilyushyk_apple">Купити</a></button>
       </div>
-      <div class="product-card" data-category="used" data-model="MacBook Pro">
-        <img src="https://cdn.myshoptet.com/usr/www.jabkolevne.cz/user/shop/big/19187_nl258a1a6.jpg?67473361" alt="MacBook Pro">
-        <h4>MacBook Pro 14" M1 Pro</h4>
-        <div class="price">59 999 ₴</div>
-        <div class="old-price">64 999 ₴</div>
-        <button class="buy-button">Купити</button>
-      </div>
-      <div class="product-card" data-category="used" data-model="MacBook Pro">
-        <img src="https://cdn.myshoptet.com/usr/www.jabkolevne.cz/user/shop/big/19187_nl258a1a6.jpg?67473361" alt="MacBook Pro">
-        <h4>MacBook Pro 14" M1 Pro</h4>
-        <div class="price">59 999 ₴</div>
-        <div class="old-price">64 999 ₴</div>
-        <button class="buy-button">Купити</button>
-      </div>	  
-      <div class="product-card" data-category="used" data-model="MacBook Pro">
-        <img src="https://cdn.myshoptet.com/usr/www.jabkolevne.cz/user/shop/big/19187_nl258a1a6.jpg?67473361" alt="MacBook Pro">
-        <h4>MacBook Pro 14" M1 Pro</h4>
-        <div class="price">59 999 ₴</div>
-        <div class="old-price">64 999 ₴</div>
-        <button class="buy-button">Купити</button>
-      </div>
-      <div class="product-card" data-category="used" data-model="MacBook Pro">
-        <img src="https://cdn.myshoptet.com/usr/www.jabkolevne.cz/user/shop/big/19187_nl258a1a6.jpg?67473361" alt="MacBook Pro">
-        <h4>MacBook Pro 14" M1 Pro</h4>
-        <div class="price">59 999 ₴</div>
-        <div class="old-price">64 999 ₴</div>
-        <button class="buy-button">Купити</button>
-      </div>	  
+      <!-- ...інші картки... -->
     </div>
   </div>
 
@@ -75,7 +49,8 @@
     &copy; 2025 AppleOutlet. Всі права захищено. Умови користування | Політика конфіденційності
   </footer>
 
-    <script>
+  <script>
+    // Фільтрація товарів
     const categoryFilters = document.querySelectorAll('.category-filter');
     const modelFilters = document.querySelectorAll('.model-filter');
     const productCards = document.querySelectorAll('.product-card');
@@ -97,20 +72,19 @@
 
     categoryFilters.forEach(cb => cb.addEventListener('change', filterProducts));
     modelFilters.forEach(cb => cb.addEventListener('change', filterProducts));
-  </script> 
-  <script>
-  const burger = document.getElementById('burger');
-  const filters = document.querySelector('.filters');
-  burger.addEventListener('click', () => {
-    filters.classList.toggle('open');
-  });
-  // Закривати фільтри при кліку поза ними (опціонально)
-  document.addEventListener('click', (e) => {
-    if (!filters.contains(e.target) && !burger.contains(e.target)) {
-      filters.classList.remove('open');
-    }
-  });
-</script>
+
+    // Бургер-меню для фільтрів
+    const burger = document.getElementById('burger');
+    const filters = document.getElementById('filters');
+    burger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      filters.classList.toggle('open');
+    });
+    document.addEventListener('click', (e) => {
+      if (!filters.contains(e.target) && !burger.contains(e.target)) {
+        filters.classList.remove('open');
+      }
+    });
+  </script>
 </body>
 </html>
-
