@@ -7,15 +7,18 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <h1>AppleOutlet</h1>
-    <nav>
-      <a href="mac.html">Mac</a>
-      <a href="ipad.html">iPad</a>
-      <a href="iphone.html">iPhone</a>
-      <a href="macbook.html">MacBook</a>
-    </nav>
-  </header>
+<header>
+  <div class="header-left">
+    <button class="burger" id="burger">&#9776;</button>
+    <span class="logo">AppleOutlet</span>
+  </div>
+  <nav>
+    <a href="mac.html">iMac</a>
+    <a href="ipad.html">iPad</a>
+    <a href="iphone.html">iPhone</a>
+    <a href="macbook.html">MacBook</a>
+  </nav>
+</header>
 
   <div class="container">
     <div class="filters">
@@ -94,6 +97,20 @@
 
     categoryFilters.forEach(cb => cb.addEventListener('change', filterProducts));
     modelFilters.forEach(cb => cb.addEventListener('change', filterProducts));
-  </script>
+  </script> 
+  <script>
+  const burger = document.getElementById('burger');
+  const filters = document.querySelector('.filters');
+  burger.addEventListener('click', () => {
+    filters.classList.toggle('open');
+  });
+  // Закривати фільтри при кліку поза ними (опціонально)
+  document.addEventListener('click', (e) => {
+    if (!filters.contains(e.target) && !burger.contains(e.target)) {
+      filters.classList.remove('open');
+    }
+  });
+</script>
 </body>
 </html>
+

@@ -1,7 +1,16 @@
-body {
+html, body {
+  height: 100%;
+  min-height: 100vh;
   margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   font-family: sans-serif;
-  background: #f7f7f7;
+  background: #f7f7f7;  
 }
 
 header {
@@ -24,6 +33,7 @@ nav a {
   gap: 1rem;
   padding: 1rem;
   flex-wrap: wrap;
+  flex: 1 0 auto;
 }
 
 .filters {
@@ -33,18 +43,24 @@ nav a {
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   max-width: 240px;
+  height: auto;
 }
 
 .products {
   flex: 3;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(264px, 1fr));
-  gap: 1rem;
-  justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(264px, 1fr));
+  gap: 1.5rem;
+  justify-items: start;      /* вирівнювання карток по лівому краю */
+  align-items: stretch;
+  padding: 1rem 0.5rem;
+  justify-content: start;    /* додатково для grid */
 }
 
 .product-card {
-  width: 264px;
+  width: 100%;
+  max-width: 264px;
+  min-width: 220px;
   height: 404px;
   background: white;
   padding: 1rem;
@@ -54,6 +70,12 @@ nav a {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+
+.product-card:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
 }
 
 .product-card img {
@@ -90,8 +112,15 @@ footer {
   background: #000;
   color: white;
   text-align: center;
-  padding: 1rem;
-  margin-top: 0rem;
+  padding: 16px 0;  
+  margin-top: auto;
+  flex-shrink: 0;
+}
+
+@media (max-width: 1024px) {
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 768px) {
@@ -100,8 +129,56 @@ footer {
   }
   .filters {
     width: 100%;
+    max-width: 100%;
   }
   .products {
     grid-template-columns: 1fr;
+    padding: 0.5rem 0;
+  }
+  .product-card {
+    max-width: 100%;
+    min-width: 0;
+    margin: 0 auto;
+  }
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.burger {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  display: none; /* показувати тільки на малих екранах */
+}
+
+@media (max-width: 1024px) {
+  .burger {
+    display: block;
+  }
+  .filters {
+    position: fixed;
+    top: 64px; /* висота хедера */
+    left: 0;
+    width: 260px;
+    height: 100vh;
+    background: #fff;
+    z-index: 1000;
+    box-shadow: 2px 0 12px rgba(0,0,0,0.1);
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+    border-radius: 0 12px 12px 0;
+    padding-bottom: 2rem;
+  }
+  .filters.open {
+    transform: translateX(0);
+  }
+  .container {
+    flex-direction: column;
   }
 }
