@@ -35,7 +35,7 @@
         <h4>MacBook Pro 14" M1 Pro</h4>
         <div class="price">59 999 ₴</div>
         <div class="old-price">64 999 ₴</div>
-        <button class="buy-button">Купити</button>
+        <button class="buy-button"><a href="https://t.me/ilyushyk_apple">Купити</a></button>
       </div>
       <div class="product-card" data-category="used" data-model="MacBook Pro">
         <img src="https://cdn.myshoptet.com/usr/www.jabkolevne.cz/user/shop/big/19187_nl258a1a6.jpg?67473361" alt="MacBook Pro">
@@ -72,6 +72,28 @@
     &copy; 2025 AppleOutlet. Всі права захищено. Умови користування | Політика конфіденційності
   </footer>
 
-  <script src="filters.js"></script>
+    <script>
+    const categoryFilters = document.querySelectorAll('.category-filter');
+    const modelFilters = document.querySelectorAll('.model-filter');
+    const productCards = document.querySelectorAll('.product-card');
+
+    function filterProducts() {
+      const selectedCategories = Array.from(categoryFilters).filter(cb => cb.checked).map(cb => cb.value);
+      const selectedModels = Array.from(modelFilters).filter(cb => cb.checked).map(cb => cb.value);
+
+      productCards.forEach(card => {
+        const category = card.dataset.category;
+        const model = card.dataset.model;
+
+        const categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(category);
+        const modelMatch = selectedModels.length === 0 || selectedModels.includes(model);
+
+        card.style.display = (categoryMatch && modelMatch) ? 'block' : 'none';
+      });
+    }
+
+    categoryFilters.forEach(cb => cb.addEventListener('change', filterProducts));
+    modelFilters.forEach(cb => cb.addEventListener('change', filterProducts));
+  </script>
 </body>
 </html>
