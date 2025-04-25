@@ -21,9 +21,10 @@ header {
   color: white;
   position: relative;
   padding: 0 2rem;
-  min-height: 100px; /* або більше, якщо треба */
+  min-height: 100px;
   display: flex;
   align-items: flex-start;
+  justify-content: center;
 }
 
 .header-center {
@@ -44,7 +45,8 @@ header {
 nav {
   display: flex;
   gap: 1.5rem;
-  margin-top: 0.5rem;
+  margin-top: 1.5rem;
+  transition: max-height 0.3s, opacity 0.3s;
 }
 
 nav a {
@@ -170,10 +172,25 @@ footer {
   .burger {
     display: block;
   }
-  nav {
-    position: static;
-    height: auto;
-    justify-content: flex-end;
+  .header-center nav {
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    background: black;
+    position: absolute;
+    left: 0;
+    top: 64px;
+    z-index: 1000;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .header-center nav.open {
+    max-height: 300px;
+    opacity: 1;
+    pointer-events: auto;
+    padding-bottom: 1rem;
   }
 }
 
