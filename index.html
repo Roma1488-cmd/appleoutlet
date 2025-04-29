@@ -82,7 +82,7 @@
         const categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(category);
         const modelMatch = selectedModels.length === 0 || selectedModels.includes(model);
 
-        card.style.display = (categoryMatch && modelMatch) ? '' : 'none';
+        card.style.display = (categoryMatch && modelMatch) ? 'flex' : 'none';
       });
     }
 

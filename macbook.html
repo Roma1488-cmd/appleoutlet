@@ -34,33 +34,55 @@
 
   <div class="products">
     <!-- Твої картки товарів -->
-    <div class="product-card" data-category="used" data-model="MacBook Air">
+<div class="product-card" data-category="used" data-model="MacBook Pro">
+  <img src="https://cdn.myshoptet.com/usr/www.jabkolevne.cz/user/shop/big/19187_nl258a1a6.jpg?67473361" alt="MacBook Pro">
+  <h4>MacBook Pro 14" M1 Pro</h4>
+  <div class="price">59 999 ₴</div>
+  <div class="old-price">64 999 ₴</div>
+  <div class="card-buttons">
+    <button class="details-button" onclick="openModal(this)">Детальніше</button>
+    <button class="buy-button"><a href="https://t.me/ilyushyk_apple">Купити</a></button>
+  </div>
+  <div class="product-specs" style="display:none;">
+    <h3>Характеристики MacBook Pro 14"</h3>
+    <ul>
+      <li>Процесор: Apple M1 Pro</li>
+      <li>Дисплей: 14.2" Liquid Retina XDR</li>
+      <li>ОЗП: 16 ГБ</li>
+      <li>Накопичувач: 512 ГБ SSD</li>
+      <li>Акумулятор: до 17 годин відео</li>
+    </ul>
+  </div>
+</div>
+	    <div class="product-card" data-category="used" data-model="MacBook Pro">
       <img src="https://cdn.myshoptet.com/usr/www.jabkolevne.cz/user/shop/big/19187_nl258a1a6.jpg?67473361" alt="MacBook Pro">
       <h4>MacBook Pro 14" M1 Pro</h4>
       <div class="price">59 999 ₴</div>
       <div class="old-price">64 999 ₴</div>
-      <button class="buy-button"><a href="https://t.me/ilyushyk_apple">Купити</a></button>
+      <div class="card-buttons">
+        <button class="details-button" onclick="openModal(this)">Детальніше</button>
+        <button class="buy-button"><a href="https://t.me/ilyushyk_apple">Купити</a></button>
+      </div>
     </div>
 	    <div class="product-card" data-category="used" data-model="MacBook Pro">
       <img src="https://cdn.myshoptet.com/usr/www.jabkolevne.cz/user/shop/big/19187_nl258a1a6.jpg?67473361" alt="MacBook Pro">
       <h4>MacBook Pro 14" M1 Pro</h4>
       <div class="price">59 999 ₴</div>
       <div class="old-price">64 999 ₴</div>
-      <button class="buy-button"><a href="https://t.me/ilyushyk_apple">Купити</a></button>
+      <div class="card-buttons">
+        <button class="details-button" onclick="openModal(this)">Детальніше</button>
+        <button class="buy-button"><a href="https://t.me/ilyushyk_apple">Купити</a></button>
+      </div>
     </div>
 	    <div class="product-card" data-category="used" data-model="MacBook Pro">
       <img src="https://cdn.myshoptet.com/usr/www.jabkolevne.cz/user/shop/big/19187_nl258a1a6.jpg?67473361" alt="MacBook Pro">
       <h4>MacBook Pro 14" M1 Pro</h4>
       <div class="price">59 999 ₴</div>
       <div class="old-price">64 999 ₴</div>
-      <button class="buy-button"><a href="https://t.me/ilyushyk_apple">Купити</a></button>
-    </div>
-	    <div class="product-card" data-category="used" data-model="MacBook Pro">
-      <img src="https://cdn.myshoptet.com/usr/www.jabkolevne.cz/user/shop/big/19187_nl258a1a6.jpg?67473361" alt="MacBook Pro">
-      <h4>MacBook Pro 14" M1 Pro</h4>
-      <div class="price">59 999 ₴</div>
-      <div class="old-price">64 999 ₴</div>
-      <button class="buy-button"><a href="https://t.me/ilyushyk_apple">Купити</a></button>
+      <div class="card-buttons">
+        <button class="details-button" onclick="openModal(this)">Детальніше</button>
+        <button class="buy-button"><a href="https://t.me/ilyushyk_apple">Купити</a></button>
+      </div>
     </div>
   </div>
 </div>
@@ -68,6 +90,13 @@
 <footer>
   &copy; 2025 AppleOutlet. Всі права захищено. Умови користування | Політика конфіденційності
 </footer>
+
+<div class="modal" id="specs-modal">
+  <div class="modal-content">
+    <span class="modal-close" onclick="closeModal()">&times;</span>
+    <div id="modal-specs-content"></div>
+  </div>
+</div>
 
 <script>
   // Фільтрація товарів
@@ -105,6 +134,23 @@
     if (!filters.contains(e.target) && !burger.contains(e.target)) {
       filters.classList.remove('open');
     }
+  });
+  
+  // Відкриття модалки з характеристиками
+  function openModal(btn) {
+    const specs = btn.parentElement.parentElement.querySelector('.product-specs').innerHTML;
+    document.getElementById('modal-specs-content').innerHTML = specs;
+    document.getElementById('specs-modal').classList.add('active');
+  }
+
+  // Закриття модалки
+  function closeModal() {
+    document.getElementById('specs-modal').classList.remove('active');
+  }
+
+  // Закриття по кліку поза вікном
+  document.getElementById('specs-modal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
   });
 </script>
 </body>

@@ -151,14 +151,64 @@ nav.mobile.open {
   font-size: 14px;
 }
 
-.buy-button {
+.card-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  gap: 20%;
   margin-top: 10px;
-  padding: 10px 20px;
+  width: 100%;
+}
+
+.details-button {
+  width: 40%;
+  min-width: 100px;
+  max-width: 180px;
+  padding: 9px 0;
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.75rem;
+  text-align: center;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.details-button:hover {
+  background: #1256a3;
+}
+
+.buy-button {
+  width: 30%;
+  min-width: 80px;
+  max-width: 120px;
+  padding: 9px 0;
   background: #000;
   color: #fff;
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  font-weight: bold;
+  font-size: 0.75rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buy-button a {
+  color: #fff;
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+  display: block;
+  text-align: center;
 }
 
 footer {
@@ -218,6 +268,39 @@ footer {
   font-size: 1rem;
 }
 
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 1500;
+}
+.modal.active {
+  display: flex;
+}
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 18px;
+  max-width: 420px;
+  width: 90vw;
+  box-sizing: border-box;
+  margin: 0 auto;
+  text-align: left;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+}
+.modal-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
 @media (max-width: 1024px) {
   .filters {
     position: fixed;
@@ -244,5 +327,14 @@ footer {
 @media (min-width: 1025px) {
   .back-btn {
     display: none !important;
+  }
+}
+
+@media (max-width: 500px) {
+  .modal-content {
+    padding: 1rem;
+    max-width: 98vw;
+    width: 98vw;
+    border-radius: 14px;
   }
 }
