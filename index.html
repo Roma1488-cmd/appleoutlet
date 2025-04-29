@@ -42,7 +42,7 @@
         <div class="old-price">31 999 ₴</div>
         <button class="buy-button">Купити</button>
       </div>
-	      <div class="products">
+
       <div class="product-card" data-category="new" data-model="iPhone 13 Pro">
         <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-max-family-select?wid=940&hei=1112&fmt=png-alpha&.v=1629840712000" alt="iPhone">
         <h4>Apple iPhone 13 Pro 128GB</h4>
@@ -50,7 +50,7 @@
         <div class="old-price">31 999 ₴</div>
         <button class="buy-button">Купити</button>
       </div>
-	      <div class="products">
+
       <div class="product-card" data-category="new" data-model="iPhone 13 Pro">
         <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-max-family-select?wid=940&hei=1112&fmt=png-alpha&.v=1629840712000" alt="iPhone">
         <h4>Apple iPhone 13 Pro 128GB</h4>
@@ -82,7 +82,7 @@
         const categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(category);
         const modelMatch = selectedModels.length === 0 || selectedModels.includes(model);
 
-        card.style.display = (categoryMatch && modelMatch) ? 'block' : 'none';
+        card.style.display = (categoryMatch && modelMatch) ? '' : 'none';
       });
     }
 

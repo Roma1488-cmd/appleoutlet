@@ -41,5 +41,43 @@
     <footer class="main-footer">
         <!-- Такий самий футер -->
     </footer>
+	<script>
+  // Фільтрація товарів
+  const categoryFilters = document.querySelectorAll('.category-filter');
+  const modelFilters = document.querySelectorAll('.model-filter');
+  const productCards = document.querySelectorAll('.product-card');
+
+  function filterProducts() {
+    const selectedCategories = Array.from(categoryFilters).filter(cb => cb.checked).map(cb => cb.value);
+    const selectedModels = Array.from(modelFilters).filter(cb => cb.checked).map(cb => cb.value);
+
+    productCards.forEach(card => {
+      const category = card.dataset.category;
+      const model = card.dataset.model;
+
+      const categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(category);
+      const modelMatch = selectedModels.length === 0 || selectedModels.includes(model);
+
+      card.style.display = (categoryMatch && modelMatch) ? 'flex' : 'none';
+    });
+  }
+
+  categoryFilters.forEach(cb => cb.addEventListener('change', filterProducts));
+  modelFilters.forEach(cb => cb.addEventListener('change', filterProducts));
+
+  // Бургер-меню тільки для фільтрів
+  const filters = document.getElementById('filters');
+  const burger = document.getElementById('burger');
+
+  burger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    filters.classList.toggle('open');
+  });
+  document.addEventListener('click', (e) => {
+    if (!filters.contains(e.target) && !burger.contains(e.target)) {
+      filters.classList.remove('open');
+    }
+  });
+</script>
 </body>
 </html>

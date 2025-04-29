@@ -34,7 +34,7 @@
 
   <div class="products">
     <!-- Твої картки товарів -->
-    <div class="product-card" data-category="used" data-model="MacBook Pro">
+    <div class="product-card" data-category="used" data-model="MacBook Air">
       <img src="https://cdn.myshoptet.com/usr/www.jabkolevne.cz/user/shop/big/19187_nl258a1a6.jpg?67473361" alt="MacBook Pro">
       <h4>MacBook Pro 14" M1 Pro</h4>
       <div class="price">59 999 ₴</div>
@@ -86,7 +86,7 @@
       const categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(category);
       const modelMatch = selectedModels.length === 0 || selectedModels.includes(model);
 
-      card.style.display = (categoryMatch && modelMatch) ? 'block' : 'none';
+      card.style.display = (categoryMatch && modelMatch) ? 'flex' : 'none';
     });
   }
 

@@ -21,7 +21,8 @@
 </header>
 
   <div class="container">
-    <div class="filters">
+    <div class="filters" id="filters">
+	  <button class="back-btn" onclick="window.location.href='index.html'">&larr; На головну</button>
       <h3>Фільтри</h3>
       <p><strong>Категорії</strong></p>
       <label><input type="checkbox" class="category-filter" value="new"> нові</label><br>
@@ -34,7 +35,7 @@
 
     <div class="products">
       <div class="product-card" data-category="new" data-model="iMac 24">
-        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/imac-24-select-202110?wid=904&hei=840&fmt=png-alpha&.v=1633364928000" alt="iMac">
+        <img src="https://content.rozetka.com.ua/goods/images/big/520572998.jpg" alt="iMac">
         <h4>Apple iMac 24" M1</h4>
         <div class="price">49 999 ₴</div>
         <div class="old-price">54 999 ₴</div>
@@ -47,6 +48,43 @@
     &copy; 2025 AppleOutlet. Всі права захищено. Умови користування | Політика конфіденційності
   </footer>
 
-  <script src="filters.js"></script>
+<script>
+  // Фільтрація товарів
+  const categoryFilters = document.querySelectorAll('.category-filter');
+  const modelFilters = document.querySelectorAll('.model-filter');
+  const productCards = document.querySelectorAll('.product-card');
+
+  function filterProducts() {
+    const selectedCategories = Array.from(categoryFilters).filter(cb => cb.checked).map(cb => cb.value);
+    const selectedModels = Array.from(modelFilters).filter(cb => cb.checked).map(cb => cb.value);
+
+    productCards.forEach(card => {
+      const category = card.dataset.category;
+      const model = card.dataset.model;
+
+      const categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(category);
+      const modelMatch = selectedModels.length === 0 || selectedModels.includes(model);
+
+      card.style.display = (categoryMatch && modelMatch) ? 'flex' : 'none';
+    });
+  }
+
+  categoryFilters.forEach(cb => cb.addEventListener('change', filterProducts));
+  modelFilters.forEach(cb => cb.addEventListener('change', filterProducts));
+
+  // Бургер-меню тільки для фільтрів
+  const filters = document.getElementById('filters');
+  const burger = document.getElementById('burger');
+
+  burger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    filters.classList.toggle('open');
+  });
+  document.addEventListener('click', (e) => {
+    if (!filters.contains(e.target) && !burger.contains(e.target)) {
+      filters.classList.remove('open');
+    }
+  });
+</script>
 </body>
 </html>
