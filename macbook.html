@@ -22,7 +22,7 @@
 
 <div class="container">
   <div class="filters" id="filters">
-    <button class="back-btn" onclick="window.location.href='index.html'">На головну</button>
+    <button class="back-btn" onclick="window.location.href='index.html'">&larr; На головну</button>
     <h3>Фільтри</h3>
     <p><strong>Категорії</strong></p>
     <label><input type="checkbox" class="category-filter" value="new"> нові</label><br>
@@ -41,7 +41,27 @@
       <div class="old-price">64 999 ₴</div>
       <button class="buy-button"><a href="https://t.me/ilyushyk_apple">Купити</a></button>
     </div>
-    <!-- ...інші картки... -->
+	    <div class="product-card" data-category="used" data-model="MacBook Pro">
+      <img src="https://cdn.myshoptet.com/usr/www.jabkolevne.cz/user/shop/big/19187_nl258a1a6.jpg?67473361" alt="MacBook Pro">
+      <h4>MacBook Pro 14" M1 Pro</h4>
+      <div class="price">59 999 ₴</div>
+      <div class="old-price">64 999 ₴</div>
+      <button class="buy-button"><a href="https://t.me/ilyushyk_apple">Купити</a></button>
+    </div>
+	    <div class="product-card" data-category="used" data-model="MacBook Pro">
+      <img src="https://cdn.myshoptet.com/usr/www.jabkolevne.cz/user/shop/big/19187_nl258a1a6.jpg?67473361" alt="MacBook Pro">
+      <h4>MacBook Pro 14" M1 Pro</h4>
+      <div class="price">59 999 ₴</div>
+      <div class="old-price">64 999 ₴</div>
+      <button class="buy-button"><a href="https://t.me/ilyushyk_apple">Купити</a></button>
+    </div>
+	    <div class="product-card" data-category="used" data-model="MacBook Pro">
+      <img src="https://cdn.myshoptet.com/usr/www.jabkolevne.cz/user/shop/big/19187_nl258a1a6.jpg?67473361" alt="MacBook Pro">
+      <h4>MacBook Pro 14" M1 Pro</h4>
+      <div class="price">59 999 ₴</div>
+      <div class="old-price">64 999 ₴</div>
+      <button class="buy-button"><a href="https://t.me/ilyushyk_apple">Купити</a></button>
+    </div>
   </div>
 </div>
 
@@ -73,9 +93,10 @@
   categoryFilters.forEach(cb => cb.addEventListener('change', filterProducts));
   modelFilters.forEach(cb => cb.addEventListener('change', filterProducts));
 
-  // Бургер-меню для фільтрів
-  const burger = document.getElementById('burger');
+  // Бургер-меню тільки для фільтрів
   const filters = document.getElementById('filters');
+  const burger = document.getElementById('burger');
+
   burger.addEventListener('click', (e) => {
     e.stopPropagation();
     filters.classList.toggle('open');

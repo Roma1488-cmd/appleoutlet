@@ -8,13 +8,15 @@
 </head>
 <body>
   <header>
+    <button class="burger" id="burger">&#9776;</button>
     <div class="header-center">
       <h1 class="logo">AppleOutlet</h1>
-      <nav>
+      <nav class="mobile" id="nav">
         <a href="mac.html">iMac</a>
         <a href="ipad.html">iPad</a>
         <a href="iphone.html">iPhone</a>
         <a href="macbook.html">MacBook</a>
+		<a href="about.html">Про нас</a>
       </nav>
     </div>
   </header>
@@ -40,27 +42,7 @@
         <div class="old-price">31 999 ₴</div>
         <button class="buy-button">Купити</button>
       </div>
-      <div class="product-card" data-category="new" data-model="iPhone 13 Pro">
-        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-max-family-select?wid=940&hei=1112&fmt=png-alpha&.v=1629840712000" alt="iPhone">
-        <h4>Apple iPhone 13 Pro 128GB</h4>
-        <div class="price">27 999 ₴</div>
-        <div class="old-price">31 999 ₴</div>
-        <button class="buy-button">Купити</button>
-      </div>	
-      <div class="product-card" data-category="new" data-model="iPhone 13 Pro">
-        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-max-family-select?wid=940&hei=1112&fmt=png-alpha&.v=1629840712000" alt="iPhone">
-        <h4>Apple iPhone 13 Pro 128GB</h4>
-        <div class="price">27 999 ₴</div>
-        <div class="old-price">31 999 ₴</div>
-        <button class="buy-button">Купити</button>
-      </div>
-      <div class="product-card" data-category="new" data-model="iPhone 13 Pro">
-        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-max-family-select?wid=940&hei=1112&fmt=png-alpha&.v=1629840712000" alt="iPhone">
-        <h4>Apple iPhone 13 Pro 128GB</h4>
-        <div class="price">27 999 ₴</div>
-        <div class="old-price">31 999 ₴</div>
-        <button class="buy-button">Купити</button>
-      </div>	
+	      <div class="products">
       <div class="product-card" data-category="new" data-model="iPhone 13 Pro">
         <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-max-family-select?wid=940&hei=1112&fmt=png-alpha&.v=1629840712000" alt="iPhone">
         <h4>Apple iPhone 13 Pro 128GB</h4>
@@ -68,14 +50,15 @@
         <div class="old-price">31 999 ₴</div>
         <button class="buy-button">Купити</button>
       </div>
-      <div class="product-card" data-category="new" data-model="iPhone 13">
+	      <div class="products">
+      <div class="product-card" data-category="new" data-model="iPhone 13 Pro">
         <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-max-family-select?wid=940&hei=1112&fmt=png-alpha&.v=1629840712000" alt="iPhone">
         <h4>Apple iPhone 13 Pro 128GB</h4>
         <div class="price">27 999 ₴</div>
         <div class="old-price">31 999 ₴</div>
         <button class="buy-button">Купити</button>
-      </div>	  
-      <!-- Додай інші продукти аналогічно з відповідними атрибутами data-category і data-model -->
+      </div>
+      <!-- інші картки -->
     </div>
   </div>
 
@@ -105,6 +88,18 @@
 
     categoryFilters.forEach(cb => cb.addEventListener('change', filterProducts));
     modelFilters.forEach(cb => cb.addEventListener('change', filterProducts));
+
+    // Бургер для навігації на головній сторінці
+    const burger = document.getElementById('burger');
+    const nav = document.getElementById('nav');
+    burger.addEventListener('click', () => {
+      nav.classList.toggle('open');
+    });
+    document.addEventListener('click', (e) => {
+      if (!nav.contains(e.target) && !burger.contains(e.target)) {
+        nav.classList.remove('open');
+      }
+    });
   </script>
 </body>
 </html>
