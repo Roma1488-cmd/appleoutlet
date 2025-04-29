@@ -40,7 +40,20 @@
         <h4>Apple iPhone 13 Pro 128GB</h4>
         <div class="price">27 999 ₴</div>
         <div class="old-price">31 999 ₴</div>
-        <button class="buy-button">Купити</button>
+        <div class="card-buttons">
+          <button class="details-button" onclick="openModal(this)">Детальніше</button>
+          <button class="buy-button"><a href="https://t.me/ilyushyk_apple">Купити</a></button>
+        </div>
+        <div class="product-specs" style="display:none;">
+          <h3>Характеристики iPhone 13 Pro</h3>
+          <ul>
+            <li>Дисплей: 6.1" Super Retina XDR</li>
+            <li>Процесор: Apple A15 Bionic</li>
+            <li>Пам'ять: 128 ГБ</li>
+            <li>Камера: Triple 12 Мп</li>
+            <li>Акумулятор: до 22 годин відео</li>
+          </ul>
+        </div>
       </div>
 
       <div class="product-card" data-category="new" data-model="iPhone 13 Pro">
@@ -65,6 +78,13 @@
   <footer>
     &copy; 2025 AppleOutlet. Всі права захищено. Умови користування | Політика конфіденційності
   </footer>
+
+  <div class="modal" id="specs-modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal()">&times;</span>
+      <div id="modal-specs-content"></div>
+    </div>
+  </div>
 
   <script>
     const categoryFilters = document.querySelectorAll('.category-filter');
@@ -100,6 +120,25 @@
         nav.classList.remove('open');
       }
     });
+
+    function openModal(btn) {
+      const specs = btn.parentElement.parentElement.querySelector('.product-specs').innerHTML;
+      document.getElementById('modal-specs-content').innerHTML = specs;
+      document.getElementById('specs-modal').classList.add('active');
+    }
+    function closeModal() {
+      document.getElementById('specs-modal').classList.remove('active');
+    }
+    document.getElementById('specs-modal').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
   </script>
+
+  <div class="modal" id="specs-modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal()">&times;</span>
+      <div id="modal-specs-content"></div>
+    </div>
+  </div>
 </body>
 </html>
